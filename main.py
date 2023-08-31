@@ -1,4 +1,5 @@
-from src import load_cifar10
+from src import load_cifar10, Net
+
 if __name__ == '__main__':
-    trainloader,testloader,classes = load_cifar10()
-    print(len(trainloader))
+    model = Net()
+    print(model)
