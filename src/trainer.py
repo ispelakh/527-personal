@@ -1,17 +1,20 @@
 import torch.optim as optim
 import torch.nn as nn
-
+import torch
 def training_step(model, trainloader, epoch):
-    
+    device = 'cpu'
+    if torch.cuda.is_available():
+        device = 'cuda'
     criterion = nn.CrossEntropyLoss()
     optimizer = optim.SGD(model.parameters(), lr=0.001, momentum=0.9)
     
+    model.to(device)
     
     running_loss = 0.0
     for i, data in enumerate(trainloader, 0):
         # Get the inputs; data is a list of [inputs, labels]
         inputs, labels = data
-
+        inputs, labels = inputs.to(device), labels.to(device)
         # Zero the parameter gradients
         optimizer.zero_grad()
 
