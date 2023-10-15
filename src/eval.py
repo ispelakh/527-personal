@@ -4,10 +4,10 @@ def evaluate(model, test_loader):
     correct = 0
     total = 0
     device = 'cpu'
-    #if torch.cuda.is_available():
+    if torch.cuda.is_available():
         #device = 'cuda:0'
         #device = 'cuda:1'
-        #device = 'cuda'
+        device = 'cuda'
     with torch.no_grad():
         for data in test_loader:
             images, labels = data

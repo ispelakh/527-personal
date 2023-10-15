@@ -4,10 +4,10 @@ import torch
 
 def training_step(model, trainloader, epoch):
     device = 'cpu'
-    #if torch.cuda.is_available():
+    if torch.cuda.is_available():
         #device = 'cuda:0'
         #device = 'cuda:1'
-        #device = 'cuda'
+        device = 'cuda'
     criterion = nn.CrossEntropyLoss()
     optimizer = optim.SGD(model.parameters(), lr=0.001, momentum=0.9)
     
