@@ -6,7 +6,7 @@
 #SBATCH --cpus-per-task=1  # number of processor cores
 #SBATCH --nodes=1  # number of nodes
 #SBATCH --partition=instruction  # partition(s)
-#SBATCH --gres=gpu:3
+#SBATCH --gres=gpu:6
 #SBATCH --mem=1G  # max memory
 #SBATCH -J "test527"  # job name
 
