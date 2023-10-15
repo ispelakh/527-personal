@@ -7,9 +7,9 @@ if __name__ == '__main__':
     #model = ResNet50()
     #model = ModelParallelResNet50()
     #model = Net()
-    model = PipelineParallelResNet50()
+    model = PipelineParallelResNet50(split_size=8)
     
-    net = torch.nn.DataParallel(model, device_ids=[0,1])
+    #net = torch.nn.DataParallel(model, device_ids=[0,1,2,3,4,5])
     
     # create a quantized model instance
     model_int8 = torch.ao.quantization.quantize_dynamic(

@@ -6,8 +6,8 @@ def training_step(model, trainloader, epoch):
     device = 'cpu'
     if torch.cuda.is_available():
         #device = 'cuda:0'
-        #device = 'cuda:1'
-        device = 'cuda'
+        device = 'cuda:1'
+        #device = 'cuda'
     criterion = nn.CrossEntropyLoss()
     optimizer = optim.SGD(model.parameters(), lr=0.001, momentum=0.9)
     
@@ -23,8 +23,8 @@ def training_step(model, trainloader, epoch):
 
         # Forward + backward + optimize
         #outputs = model(inputs.to('cuda:0'))
-        #outputs = model(inputs.to('cuda:1'))
-        outputs = model(inputs)
+        outputs = model(inputs.to('cuda:1'))
+        #outputs = model(inputs)
         loss = criterion(outputs, labels)
         loss.backward()
         optimizer.step()
