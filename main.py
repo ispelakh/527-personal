@@ -1,14 +1,15 @@
 import torch, time
-from src import load_cifar10, Net, ResNet50, ModelParallelResNet50, training_step,evaluate
+from src import load_cifar10, Net, ResNet50, ModelParallelResNet50,PipelineParallelResNet50, training_step,evaluate
 
 if __name__ == '__main__':
     n_epochs = 10
     t1 = time.time()
     #model = ResNet50()
     #model = ModelParallelResNet50()
-    model = Net()
+    #model = Net()
+    model = PipelineParallelResNet50()
     
-    net = torch.nn.DataParallel(model, device_ids=[0,1,2,3,4,5])
+    net = torch.nn.DataParallel(model, device_ids=[0,1])
     
     # create a quantized model instance
     model_int8 = torch.ao.quantization.quantize_dynamic(
