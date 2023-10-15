@@ -6,13 +6,15 @@
 #SBATCH --cpus-per-task=1  # number of processor cores
 #SBATCH --nodes=1  # number of nodes
 #SBATCH --partition=instruction  # partition(s)
-#SBATCH --gres=gpu:1
-#SBATCH --mem=16G  # max memory
+#SBATCH --gres=gpu:3
+#SBATCH --mem=1G  # max memory
 #SBATCH -J "test527"  # job name
-
 
 # LOAD MODULES, INSERT CODE, AND RUN YOUR PROGRAMS HERE
 module load ml-gpu/20230427 
-# Modify the following path to your own work dir, which should be in /work/instruction/coms-527-f23/***
-cd /work/instruction/coms-527-f23/yusx-2/527 
+
+# make sure we are in working directory
+cd /work/instruction/coms-527-f23/ispelakh/527
+
+# execute python code
 ml-gpu python3 main.py
