@@ -5,20 +5,29 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <omp.h>
 
 const double M_pi = 3.14159265358979323846; /* reference value */
 
 double calc_pi (unsigned n) {
   double h   = 1.0 / n;
   double sum = 0.0;
-  double x;
-  int i;
   
-  for (i=0; i<n; i++) {
-    x = (i + 0.5) * h;
-    sum += 4.0 / ( 1.0 + x*x );
+  int i;
+  double partials[2] = {0,0};
+  #pragma omp parallel for
+  for (int thread = 0; thread < 2; thread++)
+  {
+    
+    for (i = 0; i < n/2; i++)
+    {
+      double x = 0.5*thread + (i + 0.5) * h;
+      partials[thread] += 4.0 / (1.0 + x * x);
+    }
   }
-
+  for (int thread = 0; thread < 2; thread++){
+    sum = sum + partials[thread];
+  }
   return h * sum;
 }
 
