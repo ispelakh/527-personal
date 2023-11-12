@@ -13,13 +13,13 @@ double calc_pi (unsigned n) {
   double h   = 1.0 / n;
   double sum = 0.0;
   
-  int i;
+  
   //double partials[2] = {0,0};
-  #pragma omp parallel for reduction(+:sum)
+  #pragma omp parallel for reduction(+:sum) private (x,i)
   for (int thread = 0; thread < 2; thread++)
   {
     //printf("Hello from process: %d\n", omp_get_thread_num());
-    for (i = 0; i < n/2; i++)
+    for (int i = 0; i < n/2; i++)
     {
       double x = 0.5*thread + (i + 0.5) * h;
       sum += 4.0 / (1.0 + x * x);
