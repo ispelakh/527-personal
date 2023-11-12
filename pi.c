@@ -18,13 +18,13 @@ double calc_pi (unsigned n) {
   #pragma omp parallel for
   for (int thread = 0; thread < 2; thread++)
   {
-    printf("Hello from process: %d\n", omp_get_thread_num());
+    //printf("Hello from process: %d\n", omp_get_thread_num());
     for (i = 0; i < n/2; i++)
     {
       double x = 0.5*thread + (i + 0.5) * h;
       partials[thread] += 4.0 / (1.0 + x * x);
     }
-    printf("Partial is %19.15f\n", partials[thread]);
+    //printf("Partial is %19.15f\n", partials[thread]);
   }
   for (int thread = 0; thread < 2; thread++){
     sum = sum + partials[thread];
