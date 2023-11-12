@@ -27,7 +27,9 @@ double calc_pi (unsigned n) {
   }
   for (int thread = 0; thread < 2; thread++){
     sum = sum + partials[thread];
+    printf("Partial is %19.15f\n", partials[thread]);
   }
+
   return h * sum;
 }
 
