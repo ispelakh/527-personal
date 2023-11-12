@@ -15,7 +15,7 @@ double calc_pi (unsigned n) {
   
   
   //double partials[2] = {0,0};
-  #pragma omp parallel for reduction(+:sum) private (x,i)
+  #pragma omp parallel for reduction(+:sum)
   for (int thread = 0; thread < 2; thread++)
   {
     //printf("Hello from process: %d\n", omp_get_thread_num());
