@@ -18,7 +18,7 @@ double calc_pi (unsigned n) {
   #pragma omp parallel for
   for (int thread = 0; thread < 2; thread++)
   {
-    
+    printf("Hello from process: %d\n", omp_get_thread_num());
     for (i = 0; i < n/2; i++)
     {
       double x = 0.5*thread + (i + 0.5) * h;
