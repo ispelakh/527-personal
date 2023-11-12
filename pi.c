@@ -24,6 +24,7 @@ double calc_pi (unsigned n) {
       double x = 0.5*thread + (i + 0.5) * h;
       partials[thread] += 4.0 / (1.0 + x * x);
     }
+    printf("Partial is %19.15f\n", partials[thread]);
   }
   for (int thread = 0; thread < 2; thread++){
     sum = sum + partials[thread];
