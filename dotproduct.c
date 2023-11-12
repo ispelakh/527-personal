@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 /* Define length of dot product vectors */
-#define VECLEN 100
+#define VECLEN 100000
 int main(int argc, char *argv[])
 {
     int i, len = VECLEN;
