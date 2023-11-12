@@ -19,7 +19,7 @@ int main(int argc, char *argv[])
     }
     /* Perform the dot product */
     sum = 0.0;
-    #pragma omp parallel for reduction(+:sum) schedule(static, chunk)
+    #pragma omp parallel for reduction(+:sum) schedule(static)
     for (i = 0; i < len; i++)
     {
         sum += (a[i] * b[i]);
